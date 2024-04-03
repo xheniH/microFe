@@ -1,0 +1,4 @@
+{
+	"cartApp": "http://localhost:4201/remoteEntry.json",
+	"productApp": "http://localhost:4202/remoteEntry.json"
+}

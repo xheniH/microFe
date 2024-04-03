@@ -10,7 +10,7 @@ import { ProductModel } from 'shared-lib';
   styleUrl: './products-list.component.scss'
 })
 export class ProductsListComponent {
-  products: Array<any> = [];
+  products: Array<ProductModel> = [];
 
   constructor() {
     this.loadProducts();
