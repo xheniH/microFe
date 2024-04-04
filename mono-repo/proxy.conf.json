@@ -1,0 +1,11 @@
+
+{
+    "/assets/product-app**": {
+        "target": "http://localhost:4202/",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+           "^/assets/product-app": ""
+        }
+    }
+}

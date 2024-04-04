@@ -14,4 +14,9 @@ export const routes: Routes = [
         loadComponent: () =>
             loadRemoteModule('cartApp', './Component').then((m) => m.CartComponent)
     },
+    {
+        path: 'products',
+        loadComponent: () =>
+            loadRemoteModule('productApp', './Component').then((m) => m.ProductsListComponent)
+    },
 ];

@@ -34,7 +34,8 @@
 						"target": "host-app:serve-original:development",
 						"rebuildDelay": 0,
 						"dev": true,
-						"port": 0
+						"port": 0,
+						"proxyConfig": "projects/host-app/proxy.conf.json"
 					}
 				},
 				"extract-i18n": {
