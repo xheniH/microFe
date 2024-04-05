@@ -1,48 +1,44 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CartService } from '../services/cart.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
-export class CartComponent {
+export class CartComponent implements OnInit {
   // TODO: model
   products: Array<any> = [];
 
-  constructor() {
+  test: string = 'test';
+
+  constructor(
+    private cartService: CartService
+  ) {   
+    window.addEventListener('addToCartEvent', (e: any) => {
+      this.addCartItem(e.detail);
+    });
+  }
+
+  ngOnInit() {
     this.loadProducts();
   }
 
   loadProducts(): void {
-    this.products = [
-      {
-        id: 1,
-        title: 'Winter jacket for men and lady',
-        description: 'Yellow, Jeans',
-        image: 'assets/images/prod1.jpg',
-        price: 1156
-      },
-      {
-        id: 2,
-        title: 'Mens T-shirt Cotton Base',
-        description: 'Blue, Medium',
-        image: 'assets/images/prod2.jpg',
-        price: 50
-      },
-      {
-        id: 3,
-        title: 'Blazer Suit Dress Jacket for Men',
-        description: 'XL size, Jeans, Blue',
-        image: 'assets/images/prod3.jpg',
-        price: 250
-      }
-    ]
+    this.products = this.cartService.loadCartItems();
   }
 
   removeProductFromCart(id: number): void {
     this.products = this.products.filter((prod) => prod.id !== id);
+  }
+
+  addCartItem(data: any): void {
+    // this.products.push(data);
+    this.test = 'xhen'
+    console.error('test', this.test);
   }
 }
