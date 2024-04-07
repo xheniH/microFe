@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CartItemModel } from '../models/cartItem.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +8,17 @@ export class CartService {
 
   constructor() { }
 
-  loadCartItems() {
+  loadCartItems(): Array<CartItemModel> {
     return [
       {
-        id: 1,
-        title: 'Winter jacket for men and lady',
-        description: 'Yellow, Jeans',
-        image: 'assets/images/prod1.jpg',
-        price: 1156
+        quantity: 2,
+        product: {
+          id: 1,
+          title: 'Winter jacket for men and lady',
+          description: 'Yellow, Jeans',
+          image: 'http://localhost:4202/assets/images/prod1.jpg',
+          price: 200
+        }
       },
       // {
       //   id: 2,
@@ -33,3 +37,4 @@ export class CartService {
     ]
   }
 }
+
