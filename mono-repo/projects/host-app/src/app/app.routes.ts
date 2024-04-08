@@ -19,4 +19,7 @@ export const routes: Routes = [
         loadComponent: () =>
             loadRemoteModule('productApp', './Component').then((m) => m.ProductsListComponent)
     },
+    {
+        path: '**', redirectTo: '/home'
+    },
 ];

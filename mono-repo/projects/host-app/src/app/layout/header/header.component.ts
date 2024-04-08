@@ -24,8 +24,7 @@ export class HeaderComponent {
   }
 
   login() {
-    console.log('login', window.location.origin);
-    this.oauthService.initImplicitFlow();
+    this.oauthService.initCodeFlow();
   }
 
   logout() {
