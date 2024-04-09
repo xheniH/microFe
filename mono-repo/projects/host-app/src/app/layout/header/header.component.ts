@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { JwksValidationHandler, OAuthModule, OAuthService } from 'angular-oauth2-oidc';
-import { authCodeFlowConfig } from '../../sso.config';
+import { AuthService } from '@auth0/auth0-angular';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -13,22 +13,30 @@ import { authCodeFlowConfig } from '../../sso.config';
 })
 export class HeaderComponent {
 
-  constructor(private oauthService: OAuthService) {
-    this.configureSingleSignOn();
+  isAuthenticated: boolean = false;
+
+  constructor(public auth: AuthService) {
+    this.auth.isAuthenticated$
+      .pipe(
+        tap((res)=> {
+          console.error('res', res);
+          this.isAuthenticated = res;
+        })
+      ).subscribe();
   }
 
   configureSingleSignOn() {
-    this.oauthService.configure(authCodeFlowConfig);
-    // this.oauthService.tokenValidationHandler = new JwksValidationHandler();
-    this.oauthService.loadDiscoveryDocumentAndTryLogin();
+    // this.oauthService.configure(authCodeFlowConfig);
+    // // this.oauthService.tokenValidationHandler = new JwksValidationHandler();
+    // this.oauthService.loadDiscoveryDocumentAndTryLogin();
+
   }
 
   login() {
-    this.oauthService.initCodeFlow();
+    this.auth.loginWithRedirect();
   }
 
   logout() {
-    console.log('logout');
-    this.oauthService.logOut();
+    this.auth.logout({ logoutParams: { returnTo: document.location.origin } });
   }
 }

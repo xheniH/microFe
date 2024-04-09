@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ProductModel } from 'shared-lib';
 
 @Component({
   selector: 'app-product-item',
@@ -9,5 +10,11 @@ import { Component } from '@angular/core';
   styleUrl: './product-item.component.scss'
 })
 export class ProductItemComponent {
+
+  @Input() product: ProductModel | undefined;
+
+  addProductToCart() {
+    localStorage.setItem('product',  JSON.stringify(this.product));
+  }
 
 }

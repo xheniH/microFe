@@ -1,1 +1,45 @@
-<p>product-item works!</p>
+<div class="row justify-content-center mb-3">
+    <div class="col-md-12 justify-content-center mb-3">
+        <div class="card shadow-0 border rounded-3">
+            <div class="card-body">
+                <div class="row g-0">
+                    <div class="col-xl-3 col-md-4 d-flex justify-content-center">
+                        <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
+                            <img src="{{product?.image}}" class="w-100" />
+                            <a href="#!">
+                                <div class="hover-overlay">
+                                    <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-5 col-sm-7">
+                        <h5>{{product?.title}}</h5>
+                        <div class="d-flex flex-row">
+                            <div class="text-warning mb-1 me-2">
+                                <i class="fa fa-star" *ngFor="let item of [].constructor(product?.rating); let i = index"></i>
+                                <span class="ms-1">
+                                    {{product?.rating}}
+                                </span>
+                            </div>
+                            <span class="text-muted">{{product?.orders}} orders</span>
+                        </div>
+                        <p class="text mb-4 mb-md-0">
+                            {{product?.description}}
+                        </p>
+                    </div>
+                    <div class="col-xl-3 col-md-3 col-sm-5 align-items-center px-auto">
+                        <div class="d-flex flex-row align-items-center mb-1">
+                            <h4 class="mb-1 me-1">${{product?.price}}</h4>
+                        </div>
+                        <h6 class="text-success">Free shipping</h6>
+                        <div class="mt-4">
+                            <button class="btn btn-primary shadow-0" type="button"
+                                (click)="addProductToCart()">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

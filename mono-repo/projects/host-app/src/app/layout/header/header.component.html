@@ -15,10 +15,10 @@
           <!-- Center elements -->
           <div class="order-lg-last col-lg-5 col-sm-8 col-8">
             <div class="d-flex float-end">
-              <button (click)="login()" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center"> <i class="fas fa-user-alt m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Sign in</p> </button>
+              <button (click)="login()" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center" *ngIf="!isAuthenticated"> <i class="fas fa-user-alt m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Sign in</p> </button>
               <a routerLink="/products" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center"> <i class="fas fa-heart m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Products</p> </a>
-              <a routerLink="/cart" class="border rounded py-1 px-3 nav-link d-flex align-items-center"> <i class="fas fa-shopping-cart m-1 me-md-2"></i><p class="d-none d-md-block mb-0">My cart</p> </a>
-              <button (click)="logout()">Logout</button>
+              <a routerLink="/cart" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center"> <i class="fas fa-shopping-cart m-1 me-md-2"></i><p class="d-none d-md-block mb-0">My cart</p> </a>
+              <button class="border rounded py-1 px-3 nav-link d-flex align-items-center" (click)="logout()" *ngIf="isAuthenticated"><i class="fas fa-shopping-cart m-1 me-md-2"></i><p class="d-none d-md-block mb-0">Log out</p></button>
             
             </div>
           </div>

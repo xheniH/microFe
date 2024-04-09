@@ -3,5 +3,7 @@ export interface ProductModel {
     title: string,
     description: string,
     image: string,
-    price: number
+    price: number,
+    rating: number,
+    orders: number
 }

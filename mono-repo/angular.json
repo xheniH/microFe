@@ -82,7 +82,8 @@
 						],
 						"styles": [
 							"./node_modules/bootstrap/dist/css/bootstrap.min.css",
-							"projects/host-app/src/styles.scss"
+							"projects/host-app/src/styles.scss",
+							"./node_modules/font-awesome/css/font-awesome.css"
 						],
 						"scripts": []
 					},
@@ -204,7 +205,8 @@
 						],
 						"styles": [
 							"./node_modules/bootstrap/dist/css/bootstrap.min.css",
-							"projects/cart-app/src/styles.scss"
+							"projects/cart-app/src/styles.scss",
+							"./node_modules/font-awesome/css/font-awesome.css"
 						],
 						"scripts": [
 							"./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
