@@ -25,13 +25,6 @@ export class HeaderComponent {
       ).subscribe();
   }
 
-  configureSingleSignOn() {
-    // this.oauthService.configure(authCodeFlowConfig);
-    // // this.oauthService.tokenValidationHandler = new JwksValidationHandler();
-    // this.oauthService.loadDiscoveryDocumentAndTryLogin();
-
-  }
-
   login() {
     this.auth.loginWithRedirect();
   }

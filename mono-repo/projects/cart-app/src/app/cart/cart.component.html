@@ -6,8 +6,6 @@
         <div class="card border shadow-0">
           <div class="m-4">
             <h4 class="card-title mb-4">Your shopping cart</h4>
-
-
             <div class="row gy-3 mb-4" *ngFor="let cartItem of cartItems">
               <div class="col-lg-5">
                 <div class="me-lg-5">
@@ -22,13 +20,13 @@
               </div>
               <div class="col-lg-2 col-sm-6 col-6 d-flex flex-row flex-lg-column flex-xl-row text-nowrap">
                 <div class="">
-                  <div class="input-group mr-4" style="width: 100px;">
+                  <div class="input-group mr-4" style="width: 120px;">
                     <span class="input-group-btn">
                       <button class="quantity-left-minus btn btn-danger btn-number"
                       (click)="changeItemQuantity(cartItem?.product?.id, 'decrease')"
                         >-</button>
                     </span>
-                    {{cartItem?.quantity}}
+                    <div class="px-2 py-1">{{cartItem?.quantity}}</div>
                     <span class="input-group-btn">
                       <button type="button" class="quantity-right-plus btn btn-success btn-number"
                       (click)="changeItemQuantity(cartItem?.product?.id, 'increase')"
@@ -37,7 +35,7 @@
                   </div>
                 </div>
                 <div>
-                  <div class="h6">${{cartItem?.totalPrice ? cartItem?.totalPrice : cartItem?.product?.price}}</div> <br />
+                  <div class="h6">${{cartItem?.totalPrice ? cartItem?.totalPrice : cartItem?.product?.price}}</div>
                   <small class="text-muted text-nowrap"> ${{cartItem?.product?.price}} / per item </small>
                 </div>
               </div>
@@ -50,9 +48,8 @@
               </div>
             </div>
           </div>
-
           <div class="border-top pt-4 mx-4 mb-4">
-            <p><i class="fas fa-truck text-muted fa-lg"></i> Free Delivery within 1-2 weeks</p>
+            <p><i class="fa fa-truck text-muted fa-lg"></i> Free Delivery within 1-2 weeks</p>
             <p class="text-muted">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -65,11 +62,10 @@
       <div class="col-lg-3">
         <app-checkout [totalPrice]="totalPrice"></app-checkout>
       </div>
-
     </div>
   </div>
 </section>
-<!-- cart + summary -->
+<!-- Recommended -->
 <section>
   <div class="container my-5">
     <header class="mb-4">
@@ -82,7 +78,7 @@
           <div class="mask px-2" style="height: 50px;">
             <div class="d-flex justify-content-between">
               <h6><span class="badge bg-danger pt-1 mt-3 ms-2">New</span></h6>
-              <a href="#"><i class="fas fa-heart text-primary fa-lg float-end pt-3 m-2"></i></a>
+              <a href="#"><i class="fa fa-heart text-primary fa-lg float-end pt-3 m-2"></i></a>
             </div>
           </div>
           <a href="#" class="">
@@ -104,7 +100,7 @@
       <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card px-4 border shadow-0 mb-4 mb-lg-0">
           <div class="mask px-2" style="height: 50px;">
-            <a href="#"><i class="fas fa-heart text-primary fa-lg float-end pt-3 m-2"></i></a>
+            <a href="#"><i class="fa fa-heart text-primary fa-lg float-end pt-3 m-2"></i></a>
           </div>
           <a href="#" class="">
             <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/5.webp"
@@ -124,7 +120,7 @@
       <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card px-4 border shadow-0">
           <div class="mask px-2" style="height: 50px;">
-            <a href="#"><i class="fas fa-heart text-primary fa-lg float-end pt-3 m-2"></i></a>
+            <a href="#"><i class="fa fa-heart text-primary fa-lg float-end pt-3 m-2"></i></a>
           </div>
           <a href="#" class="">
             <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/9.webp"
@@ -144,7 +140,7 @@
       <div class="col-lg-3 col-md-6 col-sm-6">
         <div class="card px-4 border shadow-0">
           <div class="mask px-2" style="height: 50px;">
-            <a href="#"><i class="fas fa-heart text-primary fa-lg float-end pt-3 m-2"></i></a>
+            <a href="#"><i class="fa fa-heart text-primary fa-lg float-end pt-3 m-2"></i></a>
           </div>
           <a href="#" class="">
             <img src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/10.webp"

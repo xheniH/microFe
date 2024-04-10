@@ -17,7 +17,9 @@ export class CartService {
           title: 'Winter jacket for men and lady',
           description: 'Yellow, Jeans',
           image: 'http://localhost:4202/assets/images/prod1.jpg',
-          price: 200
+          price: 200,
+          rating: 4,
+          orders: 152
         }
       },
       // {
