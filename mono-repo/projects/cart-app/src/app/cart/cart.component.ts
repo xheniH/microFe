@@ -4,11 +4,14 @@ import { CartService } from '../services/cart.service';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartItemModel } from '../models/cartItem.model';
 import { CheckoutComponent } from '../checkout/checkout.component';
+import { ReccomendedItemsComponent } from '../reccomended-items/reccomended-items.component';
+import { tap } from 'rxjs';
+import { ProductModel } from 'shared-lib';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, CheckoutComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, CheckoutComponent, ReccomendedItemsComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
@@ -22,42 +25,31 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService
-  ) {   
+  ) {
   }
 
   ngOnInit() {
-    this.loadProducts();
-
-    this.itemQuantityControl.valueChanges.subscribe(value => {
-      // this.changeItemQuantity(value);
-    });
-    
-    const productToSave = localStorage.getItem('product');
-
-    if (productToSave) {
-      this.addCartItem(JSON.parse(productToSave));
-    }
-
-  }
-
-  loadProducts(): void {
-    this.cartItems = this.cartService.loadCartItems();
-    this.calculateTotalPrice();
+    this.cartService.loadCartItems().
+      pipe(
+        tap((res: Array<CartItemModel>) => {
+          this.cartItems = res;
+          this.calculateTotalPrice();
+        })
+      )
+      .subscribe();
   }
 
   calculateTotalPrice(): void {
     this.totalPrice = this.cartItems.reduce((acc, obj) =>  acc + obj.product.price * obj.quantity, 0);
-    console.error('hyhy', this.totalPrice);
-
   }
 
-  removeProductFromCart(id: number): void {
-    // this.cartItems = this.cartItems.filter((prod) => prod.id !== id);
-  }
-
-  addCartItem(data: any): void {
-    // this.products.push(data);
-    localStorage.removeItem('product');
+  removeProductFromCart(id: number | undefined): void {
+    if (id) {
+      this.cartItems = this.cartItems.filter((item) => item.product.id !== id);
+      let storedItems: Array<ProductModel> = JSON.parse(localStorage.getItem('addedItems') || '[]');
+      storedItems = storedItems.filter((item) => item.id !== id);
+      localStorage.setItem('addedItems', JSON.stringify(storedItems));
+    }
   }
 
   changeItemQuantity(itemId: number | undefined, type: string): void {
