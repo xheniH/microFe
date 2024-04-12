@@ -1,0 +1,11 @@
+.no-cart-item {
+    color: #bf3636;
+}
+
+.fixed-length {
+    display: block;
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

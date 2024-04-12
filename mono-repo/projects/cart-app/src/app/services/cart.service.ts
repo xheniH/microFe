@@ -40,28 +40,14 @@ export class CartService {
         quantity: 2,
         product: {
           id: 1,
-          title: 'Winter jacket for men and lady',
-          description: 'Yellow, Jeans',
+          title: 'Winter jacket',
+          description: 'Short description about the product goes here, for ex its features. Lorem ipsum dolor sit amet with hapti you enter into any new area of science, you almost lorem ipsum is great text consectetur adipisicing',
           image: 'http://localhost:4202/assets/images/prod1.jpg',
-          price: 200,
-          rating: 4,
-          orders: 152
+          price: 1156,
+          rating: 5,
+          orders: 125
         }
       },
-      // {
-      //   id: 2,
-      //   title: 'Mens T-shirt Cotton Base',
-      //   description: 'Blue, Medium',
-      //   image: 'assets/images/prod2.jpg',
-      //   price: 50
-      // },
-      // {
-      //   id: 3,
-      //   title: 'Blazer Suit Dress Jacket for Men',
-      //   description: 'XL size, Jeans, Blue',
-      //   image: 'assets/images/prod3.jpg',
-      //   price: 250
-      // }
     ]
   }
 }

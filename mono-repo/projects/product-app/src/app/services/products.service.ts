@@ -12,11 +12,11 @@ export class ProductsService {
     return [
         {
           id: 1,
-          title: 'Winter jacket for men and lady',
+          title: 'Winter jacket',
           description: 'Short description about the product goes here, for ex its features. Lorem ipsum dolor sit amet with hapti you enter into any new area of science, you almost lorem ipsum is great text consectetur adipisicing',
           image: 'http://localhost:4202/assets/images/prod1.jpg',
           price: 1156,
-          rating: 3,
+          rating: 5,
           orders: 125
         },
         {
@@ -36,6 +36,24 @@ export class ProductsService {
           price: 250,
           rating: 5,
           orders: 222
+        },
+        {
+          id: 4,
+          title: 'Ultra Cotton T-shirt',
+          description: 'Short description about the product goes here, for ex its features. Lorem ipsum dolor sit amet with hapti you enter into any new area of science, you almost lorem ipsum is great text consectetur adipisicing',
+          image: 'http://localhost:4202/assets/images/prod4.jpg',
+          price: 250,
+          rating: 3,
+          orders: 55
+        },
+        {
+          id: 5,
+          title: 'Ripped carrot fit jeans',
+          description: 'Short description about the product goes here, for ex its features. Lorem ipsum dolor sit amet with hapti you enter into any new area of science, you almost lorem ipsum is great text consectetur adipisicing',
+          image: 'http://localhost:4202/assets/images/prod5.jpg',
+          price: 250,
+          rating: 3,
+          orders: 66
         }
       ]
   }

@@ -6,6 +6,7 @@
         <div class="card border shadow-0">
           <div class="m-4">
             <h4 class="card-title mb-4">Your shopping cart</h4>
+            <p class="no-cart-item" *ngIf="cartItems.length === 0"><b>No items yet. Continue shopping to explore more.</b></p>
             <div class="row gy-3 mb-4" *ngFor="let cartItem of cartItems">
               <div class="col-lg-5">
                 <div class="me-lg-5">
@@ -13,7 +14,7 @@
                     <img src="{{cartItem?.product?.image}}" class="border rounded me-3" style="width: 96px; height: 96px;" />
                     <div class="">
                       <a href="#" class="nav-link">{{cartItem?.product?.title}}</a>
-                      <p class="text-muted">{{cartItem?.product?.description}}</p>
+                      <p class="text-muted fixed-length ">{{cartItem?.product?.description}}</p>
                     </div>
                   </div>
                 </div>
