@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ProductModel } from 'shared-lib';
 import { ProductItemComponent } from '../product-item/product-item.component';
-import { ProductsService } from '../services/products.service';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-products-list',

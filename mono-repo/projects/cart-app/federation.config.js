@@ -5,7 +5,7 @@ module.exports = withNativeFederation({
   name: 'cart-app',
 
   exposes: {
-    './Component': './projects/cart-app/src/app/cart/cart.component.ts',
+    './Component': './projects/cart-app/src/app/components/cart/cart.component.ts',
   },
 
   shared: {

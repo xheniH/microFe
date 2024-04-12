@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../services/cart.service';
+import { CartService } from '../../services/cart.service';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CartItemModel } from '../models/cartItem.model';
-import { CheckoutComponent } from '../checkout/checkout.component';
+import { CartItemModel } from '../../models/cartItem.model';
 import { ReccomendedItemsComponent } from '../reccomended-items/reccomended-items.component';
 import { tap } from 'rxjs';
 import { ProductModel } from 'shared-lib';
+import { CheckoutComponent } from '../checkout/checkout.component';
 
 @Component({
   selector: 'app-cart',
