@@ -18,9 +18,6 @@ import { CheckoutComponent } from '../checkout/checkout.component';
 export class CartComponent implements OnInit {
 
   cartItems: Array<CartItemModel> = [];
-
-  itemQuantityControl: FormControl = new FormControl(1);
-
   totalPrice: number = 0;
 
   constructor(
@@ -43,12 +40,20 @@ export class CartComponent implements OnInit {
     this.totalPrice = this.cartItems.reduce((acc, obj) =>  acc + obj.product.price * obj.quantity, 0);
   }
 
-  removeProductFromCart(id: number | undefined): void {
+  getTotalPricePerItem(item: CartItemModel): number {
+    if (item) {
+      return item.product?.price * item.quantity;
+    }
+    return 0;
+  }
+
+  removeItemFromCart(id: number | undefined): void {
     if (id) {
       this.cartItems = this.cartItems.filter((item) => item.product.id !== id);
-      let storedItems: Array<ProductModel> = JSON.parse(localStorage.getItem('addedItems') || '[]');
-      storedItems = storedItems.filter((item) => item.id !== id);
-      localStorage.setItem('addedItems', JSON.stringify(storedItems));
+      let storedProducts: Array<ProductModel> = JSON.parse(localStorage.getItem('storedProducts') || '[]');
+      storedProducts = storedProducts.filter((item) => item.id !== id);
+      localStorage.setItem('storedProducts', JSON.stringify(storedProducts));
+      this.calculateTotalPrice();
     }
   }
 
@@ -57,7 +62,6 @@ export class CartComponent implements OnInit {
     if (itemToChange) {
       itemToChange.quantity = (type ==='decrease') ? itemToChange.quantity - 1 : itemToChange.quantity + 1;
       itemToChange.product.price;
-      itemToChange.totalPrice = itemToChange.product.price * itemToChange.quantity;
       this.calculateTotalPrice();
     }
   }

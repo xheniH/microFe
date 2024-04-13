@@ -11,7 +11,7 @@ import { ProductsService } from '../../services/products.service';
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.scss'
 })
-export class ProductsListComponent implements OnInit{
+export class ProductsListComponent implements OnInit {
   products: Array<ProductModel> = [];
 
   constructor(private productsService: ProductsService) {

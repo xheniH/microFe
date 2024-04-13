@@ -14,21 +14,19 @@ export class ProductItemComponent {
   @Input() product: ProductModel | undefined;
 
   addProductToCart() {
-    const storedItems: Array<ProductModel> = JSON.parse(localStorage.getItem('addedItems') || '[]');
-    const foundItem = storedItems.find(item => item.id === this.product?.id);
-    if (foundItem) {
+    const storedProducts: Array<ProductModel> = JSON.parse(localStorage.getItem('storedProducts') || '[]');
+    const foundProduct = storedProducts.find((storedProduct: ProductModel) => storedProduct.id === this.product?.id);
+    if (foundProduct) {
       alert('Product is already added to cart!');
       return;
-    } 
-      
+    }
     if (this.product) {
-      const updatedItems = [...storedItems, this.product];
-      localStorage.setItem('addedItems', JSON.stringify(updatedItems));
+      const updatedProducts = [...storedProducts, this.product];
+      localStorage.setItem('storedProducts', JSON.stringify(updatedProducts));
     } else {
       alert('Unable to add product to cart. Product information missing.');
       return;
     }
-
     alert('Product added to cart!');
   }
 

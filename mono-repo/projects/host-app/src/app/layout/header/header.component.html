@@ -4,32 +4,27 @@
   <div class="p-3 text-center bg-white border-bottom">
     <div class="container">
       <div class="row gy-3">
-        <!-- Left elements -->
         <div class="col-lg-2 col-sm-4 col-4">
           <a routerLink="/products" class="float-start">
             <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" height="35" />
           </a>
         </div>
-        <!-- Left elements -->
-
         <!-- Center elements -->
         <div class="order-lg-last col-lg-5 col-sm-8 col-8">
-          <div class="d-flex float-end">
+          <div class="d-flex float-end" *ngIf="displayMenu">
             <div class="me-2 my-1" *ngIf="isAuthenticated">Hi, Xheni</div>
+            <a routerLink="/cart" [routerLinkActive]="'active-link'"
+              class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center"> <i
+                class="fa fa-shopping-cart m-1 me-md-2"></i>
+              <p class="d-none d-md-block mb-0">My cart</p>
+            </a>
             <button (click)="login()" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center"
               *ngIf="!isAuthenticated"> <i class="fa fa-user m-1 me-md-2"></i>
               <p class="d-none d-md-block mb-0">Sign in</p>
             </button>
-            <!-- <a routerLink="/products" [routerLinkActive]="'active-link'" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center"> <i
-                class="fa fa-heart m-1 me-md-2"></i>
-              <p class="d-none d-md-block mb-0">Products</p>
-            </a> -->
-            <a routerLink="/cart"  [routerLinkActive]="'active-link'" class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center"> <i
-                class="fa fa-shopping-cart m-1 me-md-2"></i>
-              <p class="d-none d-md-block mb-0">My cart</p>
-            </a>
-            <button class="border rounded py-1 px-3 nav-link d-flex align-items-center" [routerLinkActive]="'active-link'" (click)="logout()"
-              *ngIf="isAuthenticated"><i class="fa fa-sign-out  m-1 me-md-2"></i>
+            <button class="border rounded py-1 px-3 nav-link d-flex align-items-center"
+              [routerLinkActive]="'active-link'" (click)="logout()" *ngIf="isAuthenticated"><i
+                class="fa fa-sign-out  m-1 me-md-2"></i>
               <p class="d-none d-md-block mb-0">Log out</p>
             </button>
           </div>

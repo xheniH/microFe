@@ -15,26 +15,25 @@ export class CartService {
 
   loadCartItems(): Observable<Array<CartItemModel>> {
     return this.auth.isAuthenticated$
-    .pipe(
-      map((res)=> {
-          const itemsSavedByUser = res ? this.loadSavedItems() : [];
-          const storedItems: Array<ProductModel> = JSON.parse(localStorage.getItem('addedItems') || '[]');
-          storedItems.forEach((product: ProductModel) => {
-            const productInCart = itemsSavedByUser.find((item: CartItemModel)=> item.product.id === product.id);
+      .pipe(
+        map((isAuthenticated: boolean) => {
+          const productsSavedByUser = isAuthenticated ? this.loadProductsSavedByUser() : [];
+          const storedProducts: Array<ProductModel> = JSON.parse(localStorage.getItem('storedProducts') || '[]');
+          storedProducts.forEach((product: ProductModel) => {
+            const productInCart = productsSavedByUser.find((item: CartItemModel) => item.product.id === product.id);
             if (!productInCart) {
-              itemsSavedByUser.push({
+              productsSavedByUser.push({
                 quantity: 1,
                 product
               })
             }
           });
-          return itemsSavedByUser;
-      })
-    );
-
+          return productsSavedByUser;
+        })
+      );
   }
 
-  loadSavedItems(): Array<CartItemModel> {
+  loadProductsSavedByUser(): Array<CartItemModel> {
     return [
       {
         quantity: 2,

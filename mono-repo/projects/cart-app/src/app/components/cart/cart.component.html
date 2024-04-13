@@ -13,7 +13,7 @@
                   <div class="d-flex">
                     <img src="{{cartItem?.product?.image}}" class="border rounded me-3" style="width: 96px; height: 96px;" />
                     <div class="">
-                      <a href="#" class="nav-link">{{cartItem?.product?.title}}</a>
+                      <div class="nav-link">{{cartItem?.product?.title}}</div>
                       <p class="text-muted fixed-length ">{{cartItem?.product?.description}}</p>
                     </div>
                   </div>
@@ -36,7 +36,7 @@
                   </div>
                 </div>
                 <div>
-                  <div class="h6">${{cartItem?.totalPrice ? cartItem?.totalPrice : cartItem?.product?.price}}</div>
+                  <div class="h6">${{getTotalPricePerItem(cartItem)}}</div>
                   <small class="text-muted text-nowrap"> ${{cartItem?.product?.price}} / per item </small>
                 </div>
               </div>
@@ -44,7 +44,7 @@
                 class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
                 <div class="float-md-end">
                   <button class="btn btn-light border text-danger icon-hover-danger"
-                    (click)="removeProductFromCart(cartItem?.product?.id)"> Remove</button>
+                    (click)="removeItemFromCart(cartItem?.product?.id)"> Remove</button>
                 </div>
               </div>
             </div>

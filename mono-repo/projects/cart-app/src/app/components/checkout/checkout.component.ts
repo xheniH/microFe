@@ -20,6 +20,8 @@ export class CheckoutComponent {
     this._totalPrice = val;
     if (val) {
       this.calculateTotalCheckout();
+    } else {
+      this.totalCheckout = 4;
     }
   }
 
@@ -27,9 +29,6 @@ export class CheckoutComponent {
 
   get totalPrice(): number | undefined {
     return this._totalPrice;
-  }
-
-  constructor() {
   }
 
   applyCoupon(): void {
@@ -46,10 +45,10 @@ export class CheckoutComponent {
 
   calculateTotalCheckout(): void {
     if (this.totalPrice) {
-      const totalPriceAndTax = this.totalPrice - 4;
+      const totalPriceAndTax = this.totalPrice + 4;
       this.totalCheckout = this.displayDiscount ? totalPriceAndTax - 10 : totalPriceAndTax;
     } else {
-      this.totalCheckout = 0;
+      this.totalCheckout = 4;
     }
   }
 

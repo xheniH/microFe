@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { tap } from 'rxjs';
+import { catchError, finalize, tap } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -11,16 +11,24 @@ import { tap } from 'rxjs';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
 
   isAuthenticated: boolean = false;
+  displayMenu: boolean = false;
 
   constructor(public auth: AuthService) {
+  }
+
+  ngOnInit(): void {
     this.auth.isAuthenticated$
       .pipe(
-        tap((res)=> {
-          console.error('res', res);
+        tap((res: boolean) => {
           this.isAuthenticated = res;
+          this.displayMenu = true;
+        }),
+        catchError(err => {
+          this.displayMenu = true;
+          return err;
         })
       ).subscribe();
   }

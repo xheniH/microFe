@@ -29,13 +29,12 @@
                         </p>
                     </div>
                     <div class="col-xl-3 col-md-3 col-sm-5 align-items-center px-auto">
-                        <div class="d-flex flex-row align-items-center mb-1">
+                        <div class="d-flex flex-column align-items-center mb-1">
                             <h4 class="mb-1 me-1">${{product?.price}}</h4>
-                        </div>
-                        <h6 class="text-success">Free shipping</h6>
-                        <div class="mt-4">
-                            <button class="btn btn-primary shadow-0" type="button"
-                                (click)="addProductToCart()">Add to cart</button>
+                            <h6 class="text-success">Free shipping</h6>
+                            <div class="mt-4">
+                                <button class="btn btn-primary shadow-0" type="button" (click)="addProductToCart()">Add to cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
